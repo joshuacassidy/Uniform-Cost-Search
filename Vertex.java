@@ -4,8 +4,8 @@ public class Vertex implements Comparable<Vertex> {
     private String name;
     private ArrayList<Edge> edges;
     private boolean visited;
-    public double pathCost;
-    public Vertex predecessor;
+    private double pathCost;
+    private Vertex predecessor;
 
     public Vertex(String name) {
         this.name = name;

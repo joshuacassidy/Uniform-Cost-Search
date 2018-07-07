@@ -3,6 +3,7 @@ import java.util.*;
 public class UniformCostSearch {
 
     public String search(Vertex start, Vertex target) {
+
         start.setPathCost(0);
         PriorityQueue<Vertex> priorityQueue = new PriorityQueue<>();
         priorityQueue.add(start);
@@ -17,15 +18,15 @@ public class UniformCostSearch {
             } else {
                     for (Edge edge : current.getEdges()) {
                         Vertex child = edge.getTarget();
-                        double newChildCost = current.pathCost + edge.getWeight();
+                        double newChildCost = current.getPathCost() + edge.getWeight();
 
                         if(!explored.contains(child) && !priorityQueue.contains(child)){
                             child.setPathCost(newChildCost);
-                            child.predecessor = current;
+                            child.setPredecessor(current);
                             priorityQueue.add(child);
                         } else if((priorityQueue.contains(child)) && newChildCost < child.getPathCost()) {
                             child.setPathCost(newChildCost);
-                            child.predecessor = current;
+                            child.setPredecessor(current);
                             priorityQueue.remove(child);
                             priorityQueue.add(child);
                         } else {
